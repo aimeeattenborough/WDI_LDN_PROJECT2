@@ -1,0 +1,61 @@
+<div id="particles-js"></div>
+
+<div class="container">
+  <form method="POST" action="/visors">
+    <%# //how the form should behave - it's saying make sure you post the form to / visors as part of CREATE%>
+    <%# when we submit the form it is submitting a POST REQUEST which is picked up by create %>
+    <div class="field">
+      <label class="label">Name</label>
+      <div class="control">
+        <input class="input" name="name" type="text" placeholder="Name" required minlength="2">
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Comfort (out of 5)</label>
+      <div class="control">
+        <input class="input" name="comfort" type="text" placeholder="Comfort" required minlength="1">
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Peak Angle (in degrees)</label>
+      <div class="control">
+        <input class="input" name="peakAngle" type="text" placeholder="Peak Angle" required minlength="1">
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Shade Throwing (out of 5)</label>
+      <div class="control">
+        <input class="input" name="shadeThrowing" type="number" placeholder="Shade Throwing" required min="1">
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Image</label>
+      <div class="control">
+        <input type="hidden" name="image" required />
+        <button class="button image-upload" type="button">Choose an image to upload</button>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Type</label>
+    <div class="type">
+      <select class="" name="type">
+        <option value="All">All</option>
+        <option value="Avante-garde">Avant-garde</option>
+        <option value="Futuristic">Futuristic</option>
+        <option value="Futuristic">'Wimbledon't you like my visor?</option>
+        <option value="Futuristic">Progressive Beachcomber</option>
+      </select>
+
+    </div>
+      </div>
+    <div class="field">
+      <label class="label">Overall (out of 5)</label>
+      <div class="control">
+        <input class="input" name="overall" type="number" placeholder="Overall" required min="1">
+      </div>
+    </div>
+    <div class="control">
+      <button class="button">Submit</button>
+    </div>
+  </form>
+</div>

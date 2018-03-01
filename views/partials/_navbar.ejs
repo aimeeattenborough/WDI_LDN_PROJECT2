@@ -1,0 +1,28 @@
+<nav class="navbar is-transparent">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="/">
+      <img class="visor-icon" src="https://i.imgur.com/uzTcJkW.png" alt="Visor">
+      &nbsp;
+      Visor Advisor
+    </a>
+    <div class="navbar-burger burger" data-target="#mobile-menu" onclick="document.querySelector('.navbar-menu').classList.toggle('is-active');">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  <div id="mobile-menu" class="navbar-menu">
+    <div class="navbar-end">
+      <a class="navbar-item" href="/visors">All Visor Reviews</a>
+      <% if(locals.isAuthenticated) { %>
+        <a class="navbar-item" href="/visors/new">Add a Visor</a>
+        <a class="navbar-item" href="/profile">Favourites</a>
+        <a class="navbar-item" href="/logout">Logout</a>
+
+      <% } else { %>
+      <a class="navbar-item" href="/register">Register</a>
+      <a class="navbar-item" href="/login">Login</a>
+      <% } %>
+    </div>
+  </div>
+</nav>

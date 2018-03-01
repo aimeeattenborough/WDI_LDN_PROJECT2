@@ -1,0 +1,38 @@
+<section class="hero is-large homepage">
+  <div class="hero-body">
+    <div class="container has-text-right">
+      <h1 class="title has-text-white">Visor Advisor</h1>
+      <h2 class="subtitle has-text-white">Find your perfect visor</h2>
+
+      <div>
+        <form class="" action="/visors" method="GET">
+          <select name="type">
+            <option value="all">All</option>
+            <% types.forEach(type => { %>
+              <option value="<%= type %>"><%= type %></option>
+            <% }) %>
+          </select>
+          <input type="submit" value="Go">
+        </form>
+       </div>
+
+    </div>
+  </div>
+</section>
+<%# Carousel %>
+  <div class="recent-posts">
+    <h2 class="recents">Recent Posts:</h2>
+  </div>
+
+  <div class="my-slick">
+    <% visors.forEach(visor => { %>
+      <div class="slick-pics">
+      <div class="visor-name-recents">
+          <a href="/visors/<%= visor._id %>">
+            <img id="recents-image" src="<%= visor.image %>">
+            <h3 id="recents-title"><span><%= visor.name %></span></h3>
+          </a>
+        </div>
+      </div>
+    <% }) %>
+  </div>

@@ -1,0 +1,140 @@
+<div id="particles-js"></div>
+
+<div class="container">
+  <div class="columns">
+    <div class="column show-image">
+      <figure class="image">
+        <img src="<%= visor.image %>" alt="<%= visor.name %>">
+      </figure>
+    </div>
+    <div class="column">
+      <h3 class="title"><%= visor.name %></h3>
+      <h4 class="subtitle">Rating: <%= visor.avgRating %></h4>
+      <div class="visor-details">
+        <p>Comfort: <%= visor.comfort %></p>
+        <p>Peak Angle: <%= visor.peakAngle %></p>
+        <p>Shade Throwing: <%= visor.shadeThrowing %></p>
+        <p>Type: <%= visor.type %></p>
+      </div>
+       <p><%= visor.avgRating %> Stars</p>
+
+       <%# set attributes as 'data-whatever' to access in javascript by document.getElement().dataset.whatever
+       here we've used JSON.stringify to turn the object into a string (which we will then JSON.parse in JavaScript) %>
+       <h3 class="spotted">Spotted:</h3>
+       <div id="map" data-location="<%= JSON.stringify(visor.map) %>"></div>
+
+
+      <% if(locals.isAuthenticated) { %>
+        <%if(locals.currentUser.isAdmin) { %>
+        <a href="/visors/<%= visor._id %>/edit" class="button pencil-button">
+        <div class="icon">
+          <i class="fa fa-pencil"></i>
+        </div>
+        </a>
+
+        <form class="icons-form" method="POST" action="/visors/<%= visor._id %>">
+          <input type="hidden" name="_method" value="DELETE">
+          <button class="cross"><img src="https://i.imgur.com/NVuXX7S.png"></button>
+        </form>
+      <% } %>
+
+
+
+        <% if(!locals.currentUser.hasFavourited(visor)) { %>
+          <form class="icons-form" method="POST" action="/visors/<%= visor._id %>/favourites">
+            <input type="hidden" value="<%= visor._id %>" name="_method">
+            <button class="heart"><img src="https://i.imgur.com/Dskadrk.png"></button>
+          </form>
+
+          <% } else { %>
+            <form class="icons-form" method="POST" action="/visors/<%= visor._id %>/favourites">
+              <input type="hidden" name="_method" value="DELETE">
+              <button class="unheart"><img src="https://i.imgur.com/Pbq8Vtp.png"></button>
+            </form>
+        <% } %>
+
+        <ul class="comments">
+        <% visor.comments.forEach(comment => { %>
+          <li>
+          <% if(comment.isModerated || locals.currentUser.isAdmin || comment.isOwnedBy(locals.currentUser)) { %>
+          <div class="box">
+          <% if(comment.isOwnedBy(locals.currentUser) || locals.currentUser.isAdmin) { %>
+            <form class=" delete visor-advisor-delete comment-delete" method="POST" action="/visors/<%= visor._id %>/comments/<%= comment._id %>">
+              <input type="hidden" name="_method" value="DELETE">
+            </form>
+            <% } %>
+
+          <% if(locals.currentUser.isAdmin && !comment.isModerated){ %>
+              <form method="POST" action="/visors/<%= visor._id %>/comments/<%= comment._id %>/moderate">
+                <input type="hidden" name="_method" value="PATCH">
+                <button class="button">Moderate</button>
+              </form>
+            <% } %>
+
+
+            <% if(comment.isModerated || locals.currentUser.isAdmin || comment.isOwnedBy(locals.currentUser)) { %>
+            <article class="media">
+              <div class="media-left">
+                <figure class="image is-64x64">
+                  <img src="<%= comment.user.profilePicture %>" alt="Image">
+                </figure>
+              </div>
+            <div class="media-content">
+            <div class="content">
+              <p><%= comment.maintitle %></p>
+              <p><%= comment.content %></p>
+              <p><strong>Rating: <%= comment.rating %></strong></p>
+                <% if(comment.user) { %>
+                  <strong><%= comment.user.username %></strong>
+                  <small><%= comment.formattedDate %></small>
+                <% } %>
+                </div>
+                </div>
+            </article>
+            <% } %>
+            </div>
+            <% } %>
+          </li>
+          <% }) %>
+        </ul>
+
+              <p class="subtitle" id="placeholderSummary"></p>
+              <p class="subtitle" id="averageRating"></p>
+              <p class="subtitle" id="placeholderUser"></p>
+
+              <form method="POST" action="/visors/<%= visor._id %>/comments">
+                <div class="field">
+                     <div class="control">
+                       <input name="maintitle" class="input" type="text" placeholder="Add your review title here">
+                     </div>
+                   </div>
+                   <div class="field">
+                     <div class="control">
+                       <textarea class="textarea" name="content"></textarea>
+                     </div>
+                   </div>
+                   <div class="field">
+                     <div class="rating">
+                       <input type="radio" id="star5" name="rating" value="5" />
+                       <label class="full" for="star5">
+                       </label>
+                       <input type="radio" id="star4" name="rating" value="4" />
+                       <label class="full" for="star4"></label>
+                       <input type="radio" id="star3" name="rating" value="3" />
+                       <label class="full" for="star3"></label>
+                       <input type="radio" id="star2" name="rating" value="2" />
+                       <label class="full" for="star2"></label>
+                       <input type="radio" id="star1" name="rating" value="1" />
+                       <label class="full" for="star1"></label>
+                     </div>
+                   </div>
+                   <div class="field">
+                     <button class="button is-primary">Submit</button>
+                </div>
+              </form>
+              <% } %>
+
+
+            </div>
+          </div>
+        </div>

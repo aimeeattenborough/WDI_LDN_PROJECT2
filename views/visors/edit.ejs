@@ -1,0 +1,49 @@
+<div id="particles-js"></div>
+
+<div class="container">
+  <form method="POST" action="/visors/<%= visor._id %>">
+    <input type="hidden" name="_method" value="PUT">
+
+
+    <div class="field">
+      <label class="label">Name</label>
+      <div class="control">
+        <input class="input" name="name" type="text" placeholder="Name" value="<%= visor.name %>" required minlength="2">
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Comfort (out of 5)</label>
+      <div class="control">
+        <input class="input" name="comfort" type="text" placeholder="Comfort" value="<%= visor.comfort %>" required minlength="1">
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Peak Angle (in degrees)</label>
+      <div class="control">
+        <input class="input" name="peakAngle" type="text" placeholder="Peak Angle" value="<%= visor.peakAngle %>" required minlength="1">
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Shade Throwing (out of 5)</label>
+      <div class="control">
+        <input class="input" name="shadeThrowing" type="text" placeholder="Shade Throwing" value="<%= visor.shadeThrowing %>" required minlength="1">
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Image</label>
+      <div class="control">
+        <input type="hidden" name="image" required />
+        <button class="image-upload" type="button">Choose an image to upload</button>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Overall (out of 5)</label>
+      <div class="control">
+        <input class="input" name="overall" type="text" placeholder="Overall" value="<%= visor.overall %>" required minlength="1">
+      </div>
+    </div>
+    <div class="control">
+      <button class="button is-primary">Submit</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,28 @@
+<div id="particles-js"></div>
+
+<main class="container">
+
+
+  <div class="columns is-multiline">
+    <% visors.forEach(visor => { %>
+      <div id="visor-cards-index" class="column is-one-quarter-desktop is-half-tablet">
+        <a href="/visors/<%= visor._id %>">
+          <div class="card" id="card-border">
+            <div class="card-image">
+              <figure class="image">
+                <img id="img" src="<%= visor.image %>" alt="<%= visor.name %>">
+              </figure>
+            </div>
+
+            <div class="card-content">
+              <h3 id="h3" class="title"><%= visor.name %></h3>
+              <h4 class="subtitle">Rating: <%= visor.avgRating %></h4>
+            </div>
+
+
+          </div>
+        </a>
+      </div>
+    <% }) %>
+  </div>
+</main>

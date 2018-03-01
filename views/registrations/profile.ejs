@@ -1,0 +1,25 @@
+<div id="particles-js"></div>
+
+<div class="container">
+  <h1 class="title"><%= locals.currentUser.username %></h1>
+
+  <div class="columns is-multiline">
+    <% locals.currentUser.favourites.forEach(visor => { %>
+      <div id="visor-cards-favourites" class="column is-one-quarter-desktop is-half-tablet">
+        <a href="/visors/<%= visor._id %>">
+          <div class="card">
+            <div class="card-image">
+              <figure class="image">
+                <img src="<%= visor.image %>" alt="<%= visor.name %>">
+              </figure>
+            </div>
+            <div class="card-content">
+              <h3 class="title"><%= visor.name %></h3>
+              <h4 class="subtitle">Rating: <%= visor.avgRating %></h4>
+            </div>
+          </div>
+        </a>
+      </div>
+    <% }) %>
+  </div>
+</div>
