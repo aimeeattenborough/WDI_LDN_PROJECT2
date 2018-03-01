@@ -5,7 +5,7 @@ const User = require('../models/user');
 const userData = require('./data/user');
 const visorData = require('./data/visors');
 
-mongoose.connect('mongodb://localhost/visors-database', (err, db) => {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/visors-database', (err, db) => {
   db.dropDatabase();
 
   Visor.create(visorData)
