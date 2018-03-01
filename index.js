@@ -18,10 +18,10 @@ const router = require('./config/router');
 
 const app = express();
 
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 
 // connecting to the database
-mongoose.connect('mongodb://localhost/visors-database');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/visors-database');
 
 // setting up our view enginge
 app.set('view engine', 'ejs');
