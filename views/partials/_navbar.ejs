@@ -15,13 +15,13 @@
     <div class="navbar-end">
       <a class="navbar-item" href="/visors">All Visor Reviews</a>
       <% if(locals.isAuthenticated) { %>
-        <a class="navbar-item" href="/visors/new">Add a Visor</a>
-        <a class="navbar-item" href="/profile">Favourites</a>
-        <a class="navbar-item" href="/logout">Logout</a>
+        <a class="navbar-links navbar-item" href="/visors/new">Add a Visor</a>
+        <a class="navbar-links navbar-item" href="/profile">Favourites</a>
+        <a class="navbar-links navbar-item" href="/logout">Logout</a>
 
       <% } else { %>
-      <a class="navbar-item" href="/register">Register</a>
-      <a class="navbar-item" href="/login">Login</a>
+      <a class="navbar-links navbar-item" href="/register">Register</a>
+      <a class="navbar-links navbar-item" href="/login">Login</a>
       <% } %>
     </div>
   </div>

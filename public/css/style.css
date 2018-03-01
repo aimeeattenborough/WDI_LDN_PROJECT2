@@ -6,7 +6,9 @@ p {
   font-family: 'EB Garamond', serif;
   font-size: 20px;
 }
-
+.navbar-brand a.navbar-item:hover {
+  color: rgb(239, 70, 47);
+}
 .footer .content {
   padding: 10px 0;
 
