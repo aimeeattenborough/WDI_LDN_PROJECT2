@@ -48,7 +48,7 @@ p {
 }
 
 .slick-pics img {
-  width: calc(100% - 20px);
+  width: calc(35% - 20px);
   margin: 10px;
   position: relative;
 
