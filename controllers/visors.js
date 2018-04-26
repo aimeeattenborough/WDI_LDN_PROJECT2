@@ -100,6 +100,7 @@ function moderate(req, res, next) {
     .catch(next);
 }
 
+// favourites
 function favouritesCreateRoute(req, res, next) {
   req.currentUser.favourites.push(req.params.id);
 

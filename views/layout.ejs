@@ -1,111 +1,20 @@
 <!DOCTYPE html>
-  <html>
-    <head>
-      <meta charset="utf-8">
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-      <link href="https://fonts.googleapis.com/css?family=Archivo|Biryani|Didact+Gothic|Nunito|Quicksand" rel="stylesheet">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.1/css/bulma.min.css">
-      <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
-      <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
-      <link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet">
-      <link rel="stylesheet" href="/css/style.css">
+<html>
+  <head>
+    <meta charset="utf-8">
+    <%- include ./partials/_styles %>
+    <%- include ./partials/_scripts %>
 
-      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8MAPUaoWEdRKFdKZQ5nao4xGuYVymQiA">
-      </script>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js" charset="utf-8"></script>
-      <script type="text/javascript" src="slick/slick.min.js"></script>
-      <script type="text/javascript" src="https://static.filestackapi.com/v3/filestack.js"></script>
-      <script src="/js/app.js" charset="utf-8"></script>
+    <title>Visor Advisor</title>
+  </head>
+  <body>
+    <%- include ./partials/_navbar %>
 
+    <% for (const type in messages) { %>
+      <div class="notification is-<%= type %>"><%= messages[type] %></div>
+    <% } %>
 
-      <title>Visor Advisor</title>
-
-    </head>
-    <body>
-      <%- include ./partials/_navbar %>
-
-      <% for (const type in messages) { %>
-        <div class="notification is-<%= type %>"><%= messages[type] %></div>
-        <% } %>
-
-        <%- body %>
-        <%- include ./partials/_footer %>
-
-      </body>
-      <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-      <script>
-      particlesJS("particles-js", {
-        "particles": {
-          "number": {
-            "value": 100,
-            "density": {
-              "enable": true,
-              "value_area": 700
-            }
-          },
-          "color": {
-            "value": "random"
-          },
-          "shape": {
-            "type": "circle",
-            "stroke": {
-              "width": 0,
-              "color": "#000000"
-            },
-            "polygon": {
-              "nb_sides": 5
-            },
-            "image": {
-              "src": "img/github.svg",
-              "width": 100,
-              "height": 100
-            }
-          },
-          "opacity": {
-            "value": 0.5,
-            "random": false,
-            "anim": {
-              "enable": false,
-              "speed": 2,
-              "opacity_min": 0.1,
-              "sync": false
-            }
-          },
-          "size": {
-            "value": 6,
-            "random": true,
-            "anim": {
-              "enable": false,
-              "speed": 40,
-              "size_min": 0.1,
-              "sync": false
-            }
-          },
-          "line_linked": {
-            "enable": false,
-            "distance": 150,
-            "color": "#ffffff",
-            "opacity": 0.4,
-            "width": 1
-          },
-          "move": {
-            "enable": true,
-            "speed": 1,
-            "direction": "none",
-            "random": false,
-            "straight": false,
-            "out_mode": "out",
-            "bounce": false,
-            "attract": {
-              "enable": false,
-              "rotateX": 600,
-              "rotateY": 1200
-            }
-          }
-        },
-        "retina_detect": true
-      });
-      </script>
-
-      </html>
+    <%- body %>
+    <!-- <%- include ./partials/_footer %> -->
+  </body>
+</html>

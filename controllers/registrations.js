@@ -6,7 +6,18 @@ function newRoute(req, res) {
 
 function createRoute(req, res, next) {
   User.create(req.body)
-    .then(() => res.redirect('/visors'))
+    .then(user => {
+      if(!user || !user.validatePassword(req.body.password)) {
+        req.flash('info', 'Invalid credentials');
+        return res.redirect('/login');
+      }
+      // store the logged in user's ID into the session cookie (session is not req'ed as it as attached to .res in the create route)
+      // session cookie is sent to me in the request, need to check whether there is a userId in there
+      req.session.userId = user._id;
+      req.flash('success', `Welcome ${user.username}!`);
+
+      res.redirect('/visors');
+    })
     .catch(next);
 }
 

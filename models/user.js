@@ -47,7 +47,7 @@ schema.methods.validatePassword = function validatePassword(password) { //passwo
 schema.methods.hasFavourited = function hasFavourited(visor) {
   // .some method returns true if one item in the array passes the test
   // we loop over the user's favourite array (array of ids)
-  // we check to see if any of those ids matches the id of the game that we have passed in
+  // we check to see if any of those ids matches the id of the visor that we have passed in
   return this.favourites.some((favourite) => {
     return favourite.equals(visor._id);
   });
