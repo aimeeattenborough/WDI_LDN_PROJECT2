@@ -110,7 +110,7 @@ $(document).ready(function(){
   });
 
   // STARS
-  // if star{number} is cicked, change the value of the input to {number}
+  // if star{number} is clicked, change the value of the input to {number}
   const $ratingValue = $('.ratingValue');
   const $stars = $('[name=rating]');
 

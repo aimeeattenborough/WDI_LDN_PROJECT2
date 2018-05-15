@@ -43,13 +43,13 @@
         <% if(!locals.currentUser.hasFavourited(visor)) { %>
           <form class="icons-form" method="POST" action="/visors/<%= visor._id %>/favourites">
             <input type="hidden" value="<%= visor._id %>" name="_method">
-            <button class="heart"><img src="https://i.imgur.com/Dskadrk.png"></button>
+            <button class="heart"><img src="https://i.imgur.com/Pbq8Vtp.png"></button>
           </form>
 
           <% } else { %>
             <form class="icons-form" method="POST" action="/visors/<%= visor._id %>/favourites">
               <input type="hidden" name="_method" value="DELETE">
-              <button class="unheart"><img src="https://i.imgur.com/Pbq8Vtp.png"></button>
+              <button class="unheart"><img src="https://i.imgur.com/Dskadrk.png"></button>
             </form>
         <% } %>
 
